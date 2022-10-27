@@ -11,6 +11,7 @@ let app = express();
 
 /**
  * lesson 2
+ * servir html
  */
 // let absolutePath = __dirname + '/views/index.html'
 // app.get('/', function(req, res) {
@@ -19,6 +20,7 @@ let app = express();
 
 /**
  * lesson 3
+ * expor conteúdo de diretório estático
  */
 // app.use('/public', express.static(__dirname + '/public'))
 
@@ -28,6 +30,7 @@ let app = express();
 
 /**
  * lesson 4
+ * json
  */
 // app.get('/json', function(req, res) {
 //     res.json({message: "Hello json"})
@@ -35,6 +38,7 @@ let app = express();
 
 /**
  * lesson 5
+ * .env
  */
 // app.get('/json', function(req, res) {
 //     let messageStyle = process.env.MESSAGE_STYLE
@@ -47,6 +51,7 @@ let app = express();
 
 /**
  * lesson 6
+ * middlewares
  */
 // app.use(function(req, res, next) {
 //     console.log(`${req.method} ${req.path} - ${req.ip}`)
@@ -59,6 +64,7 @@ let app = express();
 
 /**
  * lesson 7
+ * concatenamento de middleware com rotas
  */
 // app.get('/now', function(req, res, next) {
 //     req.time = new Date().toString()
@@ -69,9 +75,20 @@ let app = express();
 
 /**
  * lesson 8
+ * parâmetros de rota
  */
-app.get('/:word/echo', function(req, res) {
-    res.json({echo: req.params.word})
-})
+// app.get('/:word/echo', function(req, res) {
+//     res.json({echo: req.params.word})
+// })
+
+/**
+ * lesson 9
+ * strings de consulta
+ * encadeamento de manipuladores
+ */
+app.route('/name')
+    .get(function(req, res) {
+        res.json({name: `${req.query.first} ${req.query.last}`})
+    })
 
  module.exports = app;
