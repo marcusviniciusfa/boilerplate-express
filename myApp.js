@@ -1,6 +1,7 @@
 require('dotenv').config()
-let express = require('express');
-let app = express();
+let bodyParser = require('body-parser')
+let express = require('express')
+let app = express()
 
 /**
  * lesson 1
@@ -86,9 +87,16 @@ let app = express();
  * strings de consulta
  * encadeamento de manipuladores
  */
-app.route('/name')
-    .get(function(req, res) {
-        res.json({name: `${req.query.first} ${req.query.last}`})
-    })
+// app.route('/name')
+//     .get(function(req, res) {
+//         res.json({name: `${req.query.first} ${req.query.last}`})
+//     })
 
- module.exports = app;
+/**
+ * lesson 10
+ * método post e o body (ou payload) da solicitação
+ * body parser
+ */
+app.use(bodyParser.urlencoded({extended: false}))
+
+module.exports = app;
