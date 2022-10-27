@@ -97,6 +97,18 @@ let app = express()
  * método post e o body (ou payload) da solicitação
  * body parser
  */
+// app.use(bodyParser.urlencoded({extended: false}))
+
+/**
+ * lesson 11
+ */
 app.use(bodyParser.urlencoded({extended: false}))
+
+app.route('/name')
+    .get(function(req, res) {
+        res.json({name: `${req.query.first} ${req.query.last}`})
+    }).post(function(req, res) {
+        res.json({name: `${req.body.first} ${req.body.last}`})
+    })
 
 module.exports = app;
