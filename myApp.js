@@ -45,4 +45,16 @@ let app = express();
 //     res.json(data)
 // })
 
+/**
+ * lesson 6
+ */
+app.use(function(req, res, next) {
+    console.log(`${req.method} ${req.path} - ${req.ip}`)
+    next()
+})
+
+app.get('/', function(req, res) {
+    res.send('Hello Express')
+})
+
  module.exports = app;
